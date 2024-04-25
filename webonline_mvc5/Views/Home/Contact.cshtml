@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout1.cshtml"; // Assuming you have a shared layout file
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="contact-form">
+                <h2>Get In Touch</h2>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt" style="color: #3482A3; background-color: #fff;"></i> 123 Street, City, Country</p>
+                <p><i class="fas fa-phone" style="color: #3482A3; background-color: #fff;"></i> +123 456 789</p>
+                <p><i class="fas fa-envelope" style="color: #3482A3; background-color: #fff;"></i> info@example.com</p>
+            </div>
+
+            <img src="https://digitalassets-retail.cdn-apple.com/retail-image-server/c84/d0a/569/7c3/778/bdd/d1f/781/da1/9fa/f2e90d24-3f63-3d08-a96e-437e760c10ef_JPG_FritzFarm_gallery_large_2x.jpg" alt="Image" class="contact-image">
+        </div>
+    </div>
+</div>
+
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        h2 {
+            text-align: center;
+            color: #3482A3;
+        }
+
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .contact-form .form-group {
+                margin-bottom: 20px;
+            }
+
+            .contact-form label {
+                font-weight: bold;
+                color: #333;
+            }
+
+            .contact-form input[type="text"],
+            .contact-form input[type="email"] {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+            .contact-form textarea {
+                resize: vertical;
+            }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+            .contact-info p {
+                margin: 0;
+                padding: 5px;
+            }
+
+            .contact-info i {
+                font-size: 18px;
+                color: #007bff;
+                margin-right: 5px;
+            }
+
+        .contact-image {
+            width: 100%;
+            margin-top: 30px;
+            float: right;
+        }
+    </style>
+</head>

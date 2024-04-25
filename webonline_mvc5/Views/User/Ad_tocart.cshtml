@@ -1,0 +1,90 @@
+﻿@model webonline_mvc5.Models.product
+@{
+    ViewBag.Title = "Ad_tocart";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<head>
+    <style>
+        /* CSS cho phần nội dung */
+        .product-details {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Căn giữa nội dung */
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto 15px; /* Căn giữa theo chiều ngang và thêm khoảng cách dưới */
+            border-radius: 5px;
+        }
+
+        .ad-title {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .ad-details p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .quantity label {
+            margin-right: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .quantity input {
+            width: 60px;
+            font-size: 16px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .submit-btn {
+            padding: 8px 16px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+            .submit-btn:hover {
+                background-color: #c82333;
+            }
+    </style>
+</head>
+
+<div class="product-details">
+    <h1 class="ad-title">@Model.pro_name <small>(Ad: ID:@Model.pro_id)</small></h1>
+    <img class="product-image" src="@Url.Content(Model.pro_image)" alt="Product Image" />
+    <div class="description">
+        <h2>Description:</h2>
+        <p>@Model.pro_desc</p>
+    </div>
+    <p class="price">Price: @Model.pro_price</p>
+    <form action="@Url.Action("Ad_tocart", "User")" method="post">
+        <div class="quantity">
+            <label for="qty">Quantity:</label>
+            <input type="number" name="qty" id="qty" value="1" min="1">
+        </div>
+        <br />
+        <input type="submit" name="Submit" class="submit-btn" value="Add to Cart" />
+    </form>
+</div>
+

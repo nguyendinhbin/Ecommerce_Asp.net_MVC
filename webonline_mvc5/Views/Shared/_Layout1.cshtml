@@ -1,0 +1,325 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>@ViewBag.Title</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/Content/assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <style>
+        .featured-product-img {
+            height: 200px; /* Điều chỉnh độ cao của hình ảnh */
+            object-fit: cover; /* Đảm bảo hình ảnh không bị méo khi điều chỉnh kích thước */
+        }
+
+        .product-item {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px; /* Thêm margin dưới để tạo khoảng cách giữa các sản phẩm */
+            text-align: center;
+        }
+
+        h1 {
+            padding: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="@Url.Action("Index", "User")">Apple</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("DisplayAdd", "User")">All Products</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="@Url.Action("DisplayAdd", "User", new { id = 1 })">Macbook</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("DisplayAdd", "User", new { id = 2 })">IPhone</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("DisplayAdd", "User", new { id = 3 })">Airpods</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("About", "Home")">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a></li>
+
+                </ul>
+
+
+                <!-- Search form -->
+                <form class="d-flex ms-lg-5 me-lg-3" action="@Url.Action("DisplayAdd", "User")" method="GET">
+                    @if (!string.IsNullOrEmpty(Request.QueryString["search"]))
+                    {
+                        <input type="hidden" name="id" value="@ViewBag.CategoryId" />
+                        <input type="hidden" name="page" value="1" />
+                    }
+                    <input class="form-control me-2" type="search" placeholder="Search products..." aria-label="Search" name="search" id="search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+
+
+
+
+
+
+
+
+                <!-- Cart button -->
+                <form class="d-flex" action="@Url.Action("checkout", "User")" method="GET">
+                    <button class="btn btn-outline-dark me-lg-3" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        @if (TempData["cartCount"] != null)
+                        {
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">@TempData["cartCount"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        }
+                    </button>
+                </form>
+
+
+
+
+                <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item me-2">
+                        @if (Session["user"] != null)
+                        {
+                            <span class="nav-link">@Session["user"].ToString()</span>
+                        }
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("SignOut", "User")">Sign Out</a>
+                    </li>
+                </ul>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Content -->
+    <div class="container">
+
+    
+
+        @RenderBody()
+        <!-- Đoạn mã HTML cho nội dung của trang layout1 -->
+
+        <div class="row">
+
+
+            @if (ViewBag.FeaturedProducts != null)
+            {
+                <section class="about-area pt-5 pb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card h-100">
+                                            <img src="https://vocket.tech/app/uploads/sites/9/2022/09/FcEmXkpaMAEwxB9-1-1024x513.jpeg" class="card-img-top" alt="iPhone" style="height: 200px; object-fit: cover; transition: transform 0.3s;" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">iPhone</h5>
+                                                <p class="card-text">One of the top smartphones in the market.</p>
+                                                <a href="@Url.Action("Details", "Product", new { id = 1 })" class="btn btn-primary" style="background-color: #3482A3; border-color: #3482A3;">View Details</a>
+                                            </div>
+                                            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+                                                <div style="text-align: center;">
+                                                    <h5>iPhone</h5>
+                                                    <p>One of the top smartphones in the market.</p>
+                                                    <a href="@Url.Action("Details", "Product", new { id = 1 })" class="btn btn-primary" style="background-color: #fff; color: #3482A3; border-color: #3482A3;">View Details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card h-100">
+                                            <img src="https://p.turbosquid.com/ts-thumb/8v/6jwEe9/wa/prosilicon50001/png/1627387973/1920x1080/fit_q87/5d4bbb44cf8be5b70dc86a2af704b88b1686be9c/prosilicon50001.jpg" class="card-img-top" alt="Laptop" style="height: 200px; object-fit: cover; transition: transform 0.3s;" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Laptop</h5>
+                                                <p class="card-text">High-performance and beautifully designed laptop.</p>
+                                                <a href="@Url.Action("Details", "Product", new { id = 2 })" class="btn btn-primary" style="background-color: #3482A3; border-color: #3482A3;">View Details</a>
+                                            </div>
+                                            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+                                                <div style="text-align: center;">
+                                                    <h5>Laptop</h5>
+                                                    <p>High-performance and beautifully designed laptop.</p>
+                                                    <a href="@Url.Action("Details", "Product", new { id = 2 })" class="btn btn-primary" style="background-color: #fff; color: #3482A3; border-color: #3482A3;">View Details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card h-100">
+                                            <img src="https://stcv4.hnammobile.com/uploads/news/large/marshall-trai-nghiem-but-pha-cung-am-thanh-social.jpg?v=1649398989" class="card-img-top" alt="Marshall Headphones" style="height: 200px; object-fit: cover; transition: transform 0.3s;" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Marshall Headphones</h5>
+                                                <p class="card-text">Marshall Major IV over-ear headphones with high-quality sound.</p>
+                                                <a href="@Url.Action("Details", "Product", new { id = 3 })" class="btn btn-primary" style="background-color: #3482A3; border-color: #3482A3;">View Details</a>
+                                            </div>
+                                            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+                                                <div style="text-align: center;">
+                                                    <h5>Marshall Headphones</h5>
+                                                    <p>Marshall Major IV over-ear headphones with high-quality sound.</p>
+                                                    <a href="@Url.Action("Details", "Product", new { id = 3 })" class="btn btn-primary" style="background-color: #fff; color: #3482A3; border-color: #3482A3;">View Details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card h-100">
+                                            <img src="https://cdn.tgdd.vn//News/1528687//1-800x450.jpg" class="card-img-top" alt="AirPods" style="height: 200px; object-fit: cover; transition: transform 0.3s;" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">AirPods</h5>
+                                                <p class="card-text">Apple's wireless AirPods.</p>
+                                                <a href="@Url.Action("Details", "Product", new { id = 4 })" class="btn btn-primary" style="background-color: #3482A3; border-color: #
+3482A3;">View Details</a>
+                                            </div>
+                                            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+                                                <div style="text-align: center;">
+                                                    <h5>AirPods</h5>
+                                                    <p>Apple's wireless AirPods.</p>
+                                                    <a href="@Url.Action("Details", "Product", new { id = 4 })" class="btn btn-primary" style="background-color: #fff; color: #3482A3; border-color: #3482A3;">View Details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center justify-content-center" style="background-image: url('https://eimg.pravda.com/images/doc/9/b/9b44570-37851604-1135241166641751-3116563651641737216-n.jpg'); background-size: cover; background-position: center;">
+                                <div class="about-content text-center" style="background-color: rgba(255, 255, 255, 0.8); padding: 30px; border-radius: 10px;">
+                                    <h2 class="mb-4" style="font-family: Montserrat, sans-serif; color: #333;">Explore Convenience</h2>
+                                    <p class="mb-4" style="color: #666;">
+                                        Enjoy a great shopping experience with top technology products from our store. We provide quality products at attractive prices, ensuring customer satisfaction.
+                                    </p>
+                                    <a href="@Url.Action("Products", "Home")" class="btn btn-primary" style="background-color: #3482A3; border-color: #3482A3;">View Products</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <h1 style="color:#3482A3">Featured Products</h1>
+                foreach (var product in ViewBag.FeaturedProducts)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                        <!-- Thêm lớp mb-4 để tạo khoảng cách giữa các sản phẩm -->
+                        <div class="card">
+                            <a href="@Url.Action("ViewAdds", "User", new { id = product.pro_id })">
+                                <img src="@Url.Content(product.pro_image)" class="card-img-top img-fluid featured-product-img" alt="Product Image">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="@Url.Action("ViewAdds", "User", new { id = product.pro_id })">@product.pro_name</a>
+                                </h5>
+                                <p class="card-text">Price: @product.pro_price</p>
+                                <!-- Các chi tiết sản phẩm khác -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                        <!-- Thêm lớp mb-4 để tạo khoảng cách giữa các sản phẩm -->
+                        <div class="card">
+                            <a href="@Url.Action("ViewAdds", "User", new { id = product.pro_id })">
+                                <img src="@Url.Content(product.pro_image)" class="card-img-top img-fluid featured-product-img" alt="Product Image">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="@Url.Action("ViewAdds", "User", new { id = product.pro_id })">@product.pro_name</a>
+                                </h5>
+                                <p class="card-text">Price: @product.pro_price</p>
+                                <!-- Các chi tiết sản phẩm khác -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                        <!-- Thêm lớp mb-4 để tạo khoảng cách giữa các sản phẩm -->
+                        <div class="card">
+                            <a href="@Url.Action("ViewAdds", "User", new { id = product.pro_id })">
+                                <img src="@Url.Content(product.pro_image)" class="card-img-top img-fluid featured-product-img" alt="Product Image">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="@Url.Action("ViewAdds", "User", new { id = product.pro_id })">@product.pro_name</a>
+                                </h5>
+                                <p class="card-text">Price: @product.pro_price</p>
+                                <!-- Các chi tiết sản phẩm khác -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                        <!-- Thêm lớp mb-4 để tạo khoảng cách giữa các sản phẩm -->
+                        <div class="card">
+                            <a href="@Url.Action("ViewAdds", "User", new { id = product.pro_id })">
+                                <img src="@Url.Content(product.pro_image)" class="card-img-top img-fluid featured-product-img" alt="Product Image">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="@Url.Action("ViewAdds", "User", new { id = product.pro_id })">@product.pro_name</a>
+                                </h5>
+                                <p class="card-text">Price: @product.pro_price</p>
+                                <!-- Các chi tiết sản phẩm khác -->
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <br />
+
+
+
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/Content/js/scripts.js"></script>
+
+
+    <!-- Scripts section -->
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

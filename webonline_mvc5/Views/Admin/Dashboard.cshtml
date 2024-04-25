@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <h1>Admin Management</h1>
+</div>
+
+<div class="content">
+    <ul class="admin-links">
+        <li>
+            <a href="@Url.Action("ViewCategory", "Admin")"><i class="fas fa-sitemap"></i> Manage Categories</a>
+
+        </li>
+        <li>
+            <a href="@Url.Action("ViewProducts", "Admin")"><i class="fas fa-box"></i> Manage Products</a>
+        </li>
+
+        <li>
+            <a href="@Url.Action("Total_Bill", "Admin")"><i class="fas fa-box"></i> Manage Orders</a>
+        </li>
+
+        <li>
+            <a href="@Url.Action("ListUsers", "Admin")"><i class="fas fa-box"></i> Manage Users</a>
+        </li>
+
+    </ul>
+    <div class="slider">
+        <img class="slide active" src="https://static.chotot.com/storage/chotot-kinhnghiem/c2c/2023/09/26bbb59d-iphone-16-pro-max-gia-bao-nhieu-1.jpg">
+        <img class="slide" src="https://minhtuanmobile.com/uploads/blog/so-sanh-tuong-quan-giua-airpods-pro-gen-2-voi-airpods-pro-gen-1-nen-chon-thiet-bi-nao-220911074628.jpg">
+        <img class="slide" src="https://thumbs.vdvc.id/olret/images/original/2023/01/18/63c787c20fd34-macbook-pro_olret.jpg">
+
+        <div class="slider-controls">
+            <button class="control" onclick="prevSlide()">&#10094;</button>
+            <button class="control" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+
+
+</div>
+
+<style>
+    /* Custom Styles */
+
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: #D3D3D3;
+        padding: 20px;
+        color: #fff;
+        text-align: center;
+    }
+
+    .content {
+        padding: 20px;
+        background-color: #fff;
+        margin: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .slider {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slide {
+        width: 100%;
+        height: 100%;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+        .slide.active {
+            display: block;
+        }
+
+    .slider-controls {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+        .slider-controls button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 5px;
+            margin: 0 3px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+            .slider-controls button.active {
+                color: #ff0000;
+            }
+
+    .admin-links {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        list-style: none;
+        padding: 0;
+    }
+
+        .admin-links li {
+            margin: 0 10px;
+        }
+
+            .admin-links li a {
+                text-decoration: none;
+                padding: 10px 20px;
+                border: 2px solid #3482A3;
+                border-radius: 5px;
+                color: #3482A3;
+                font-weight: bold;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+                .admin-links li a:hover {
+                    background-color: #3482A3;
+                    color: #fff;
+                }
+</style>
+
+<script>
+    var slides = document.querySelectorAll('.slide');
+    var currentSlide = 0;
+    var slideInterval = setInterval(nextSlide, 2000);
+
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    function prevSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+</script>

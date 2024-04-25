@@ -1,0 +1,48 @@
+﻿@model IEnumerable<webonline_mvc5.Models.product>
+
+@{
+    ViewBag.Title = "View Products";
+}
+
+<style>
+    h2 {
+        text-align: center;
+        color: #3482A3;
+    }
+</style>
+
+<div class="container">
+
+
+    <h2>View Products</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.pro_id</td>
+                    <td>@product.pro_name</td>
+                    <td>@product.pro_price</td>
+                    <td>@product.category.cat_name</td>
+                    <td>@product.pro_desc</td>
+                    <td><img src="@Url.Content(product.pro_image)" alt="@product.pro_name" style="max-height: 100px;" /></td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditProduct", new { id = product.pro_id }) |
+                        @Html.ActionLink("Delete", "DeleteProduct", new { id = product.pro_id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

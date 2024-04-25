@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6b6af6288d6048e782d556fb21db6753" Name="Diagram1">
+        <EntityTypeShape EntityType="webonline_mvc5Model.admin" Width="1.5" PointX="1.375" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="webonline_mvc5Model.category" Width="1.5" PointX="2.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="webonline_mvc5Model.order_table" Width="1.5" PointX="9.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="webonline_mvc5Model.product" Width="1.5" PointX="5.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="webonline_mvc5Model.sysdiagram" Width="1.5" PointX="8" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="webonline_mvc5Model.tbl_invoice" Width="1.5" PointX="7.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="webonline_mvc5Model.tbl_user" Width="1.5" PointX="4" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="webonline_mvc5Model.FK__category__ad_id___2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="webonline_mvc5Model.FK__product__cat_id___32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="webonline_mvc5Model.FK__order_tab__o_fk___398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="webonline_mvc5Model.FK__order_tab__o_fk___3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="webonline_mvc5Model.FK__product__pro_use__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="webonline_mvc5Model.FK__tbl_invoi__in_fk__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="webonline_mvc5Model.FK_order_table_tbl_user" ManuallyRouted="true" >
+          <ConnectorPoint PointX="5.5" PointY="4.8167936197916656" />
+          <ConnectorPoint PointX="5.875" PointY="5.1917936197916656" />
+          <ConnectorPoint PointX="5.875" PointY="5.3320114666720224" />
+          <ConnectorPoint PointX="9.375" PointY="5.3320114666720224" />
+          <ConnectorPoint PointX="9.375" PointY="5.5090950520833326" />
+          <ConnectorPoint PointX="9.75" PointY="5.1340950520833326" />
+        </AssociationConnector>
+        <AssociationConnector Association="webonline_mvc5Model.FK_tbl_user_admin" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

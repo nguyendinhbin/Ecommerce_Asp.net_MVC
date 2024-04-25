@@ -1,0 +1,148 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<webonline_mvc5.Models.product>
+
+@{
+    ViewBag.Title = "DisplayAdd";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DisplayAdd</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .container {
+            height: auto;
+            padding: 20px;
+        }
+
+        .product-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+            .product-item img {
+                max-width: 100%; /* Hình ảnh sẽ không vượt quá kích thước của phần tử chứa */
+                max-height: 200px; /* Chiều cao tối đa của hình ảnh */
+                display: block;
+                margin: 0 auto; /* Căn giữa hình ảnh */
+            }
+
+
+            .product-item h4 {
+                margin-top: 10px;
+                font-size: 18px;
+            }
+
+            .product-item p {
+                font-size: 16px;
+            }
+
+        .pagination-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .pagination-container ul.pagination {
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+            }
+
+                .pagination-container ul.pagination li {
+                    display: inline;
+                    margin-right: 5px;
+                }
+
+                    .pagination-container ul.pagination li a {
+                        padding: 5px 10px;
+                        border: 1px solid #ccc;
+                        text-decoration: none;
+                        color: #333;
+                    }
+
+                    .pagination-container ul.pagination li.active a {
+                        background-color: #007bff;
+                        color: #fff;
+                    }
+
+                    .pagination-container ul.pagination li.disabled a {
+                        color: #aaa;
+                        pointer-events: none;
+                        cursor: not-allowed;
+                    }
+
+        .btn-btn-info {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <hr />
+        <!-- Loại bỏ tiêu đề "Featured Products" và chỉ giữ tiêu đề "OUR PRODUCT" -->
+        <h1 style="text-align:center">OUR PRODUCT</h1>
+        <hr />
+
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-md-10">
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-md-2">
+
+                @* <h3><span class="btn-btn-info">@Html.ActionLink("Check Out", "checkout", "User")</span></h3>*@
+
+            </div>
+
+
+            <div class="row">
+                @{ int x = 0;}
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        x++;
+
+                        <div class="col-lg-4 col-md-4">
+                            <div class="product-item">
+                                <img src="@Url.Content(item.pro_image)" alt="Product Image" />
+                                <h4>@Html.ActionLink(item.pro_name, "ViewAdds", new { id = item.pro_id })</h4>
+                                <p>Price: @item.pro_price</p>
+                                <h4>@Html.ActionLink("Add to Cart", "Ad_tocart", new { id = item.pro_id })</h4>
+                                <!-- Các chi tiết sản phẩm khác -->
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-lg-12">
+                        <p>No products available.</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Phân trang -->
+            <div class="pagination-container text-center">
+                @if (ViewBag.CategoryId != null)
+                {
+                    @Html.PagedListPager(Model, page => Url.Action("DisplayAdd", new { id = ViewBag.CategoryId, page = page }))
+                }
+                else
+                {
+                    @Html.PagedListPager(Model, page => Url.Action("DisplayAdd", new { page = page }))
+                }
+            </div>
+
+        </div>
+
+</body>
+</html>

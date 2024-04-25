@@ -1,0 +1,32 @@
+﻿@model List<webonline_mvc5.Models.product>
+
+<h2>Product List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <!-- Thêm các cột khác nếu cần -->
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.pro_id</td>
+                <td>@product.pro_name</td>
+                <td>@product.pro_price</td>
+                <td>@product.category.cat_name</td> <!-- Điều chỉnh tên propety tương ứng trong model của bạn -->
+                <!-- Thêm các cột khác nếu cần -->
+                <td>
+                    <a href="@Url.Action("EditProduct", "Admin", new { id = product.pro_id })">Edit</a> |
+                    <a href="@Url.Action("DeleteProduct", "Admin", new { id = product.pro_id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

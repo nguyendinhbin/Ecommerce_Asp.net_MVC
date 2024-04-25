@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<style>
+    /* CSS for customizing the table */
+    .table-responsive {
+        max-width: 500px; /* Điều chỉnh kích thước tối đa của bảng */
+        margin: 50px auto; /* Canh giữa bảng */
+    }
+
+    .table {
+        font-size: 20px; /* Điều chỉnh kích thước font chữ */
+    }
+
+    th, td {
+        padding: 8px; /* Điều chỉnh khoảng cách nội dung với viền */
+        text-align: center; /* Canh giữa nội dung */
+    }
+
+    .empty-cart {
+        max-width: 500px; /* Điều chỉnh kích thước tối đa của khung */
+        margin: 50px auto; /* Canh giữa khung */
+        border: 1px solid #ccc; /* Định dạng viền */
+        padding: 20px; /* Khoảng cách giữa nội dung và viền */
+        background-color: #f9f9f9; /* Màu nền của khung */
+        text-align: center; /* Canh giữa nội dung */
+    }
+</style>
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["msg"]
+    </div>
+}
+
+@{
+    // Calculate total bill
+    decimal totalBill = 0;
+    if (TempData["total"] != null)
+    {
+        totalBill = Convert.ToDecimal(TempData["total"]);
+    }
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Bill</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in TempData["cart"] as List<webonline_mvc5.Models.cart>)
+                {
+                    <tr>
+                        <td>@item.pro_id</td>
+                        <td>@item.pro_name</td>
+                        <td>@item.pro_price</td>
+                        <td>@item.o_qty</td>
+                        <td>@(item.o_bill)</td>
+                        <td>
+                            <a class="btn btn-danger btn-sm" href="@Url.Action("remove", "User", new { id = item.pro_id })">&#10060;</a>
+
+                        </td>
+                        @{ totalBill += (decimal)item.o_bill; }
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">Total Bill</td>
+                    <td>@totalBill</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+}
+else
+{
+    <div class="empty-cart">
+        <h3>Cart is empty</h3>
+        <p>Please add items to your cart to proceed.</p>
+        @Html.ActionLink("Back to Shopping", "Index", "User", null, new { @class = "btn btn-primary" })
+    </div>
+}
+
+@if (TempData["cart"] != null)
+{
+    using (Html.BeginForm())
+    {
+        <input type="submit" value="Show Now" class="btn btn-primary" />
+    }
+}

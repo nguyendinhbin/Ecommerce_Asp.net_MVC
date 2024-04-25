@@ -1,0 +1,45 @@
+﻿@model IEnumerable<webonline_mvc5.Models.tbl_user>
+
+@{
+    ViewBag.Title = "List Users";
+}
+
+<h2>List Users</h2>
+
+<p>
+    @Html.ActionLink("Create New User", "AddUser")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.u_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.u_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.u_email)
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.u_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.u_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.u_email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditUser", new { id = item.u_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.u_id }) |
+                @Html.ActionLink("Delete", "DeleteUser", new { id = item.u_id })
+            </td>
+        </tr>
+    }
+
+</table>

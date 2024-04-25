@@ -1,0 +1,203 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";  // Assuming a shared layout is used
+}
+
+<section class="about-feature-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Fast Shipping</h3>
+                    <p>Guaranteed delivery within 24 hours.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Our support team is available anytime, anywhere.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-gift"></i>
+                    <h3>Special Offers</h3>
+                    <p>Discover exciting promotions and gifts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="about-content">
+                    <h2>Who Are We?</h2>
+                    <p>Our store is committed to providing the best shopping experience for every customer. We don't just sell products; we want to create a community where everyone can feel cared for and supported.</p>
+                    <a href="/products" class="btn btn-primary">View Products</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-image">
+                    <img src="https://macone.vn/wp-content/uploads/2021/09/apple_nso-marina-bay-sands_exterior_09072020.jpg.og_.jpg" alt="About" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="know-us-better">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="about-info">
+                    <h2>Get to Know Us Better</h2>
+                    <p>We take pride in bringing value and joy to our customers. We are not just selling products; we are building a strong and sustainable community.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-info">
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Success</h3>
+                        <p>We have achieved many successes in serving the community and society.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Community</h3>
+                        <p>We are building a passionate and creative community where people can share ideas and experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about-feature-section {
+        padding: 80px 0;
+        background-color: #f9f9f9;
+    }
+
+    .feature-box {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        .feature-box i {
+            font-size: 48px;
+            color: #3482A3;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            color: #333333;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            color: #777777;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+    .about-page {
+        padding: 80px 0;
+    }
+
+    .about-content {
+        margin-bottom: 40px;
+    }
+
+        .about-content h2 {
+            color: #333333;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: #777777;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+    .about-image img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background-color: #3482A3;
+        color: #ffffff;
+        padding: 12px 24px;
+        border-radius: 5px;
+        font-size: 16px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #3482A3;
+        }
+
+    .know-us-better {
+        padding: 80px 0;
+        background-color: #f9f9f9;
+    }
+
+    .about-info h2 {
+        color: #333;
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .about-info p {
+        color: #777;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .feature-info .feature-item {
+        margin-bottom: 30px;
+    }
+
+        .feature-info .feature-item i {
+            font-size: 48px;
+            color: #3482A3;
+            margin-bottom: 20px;
+        }
+
+        .feature-info .feature-item h3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .feature-info .feature-item p {
+            color: #777;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+</style>
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>

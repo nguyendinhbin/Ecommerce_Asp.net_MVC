@@ -1,0 +1,102 @@
+﻿@model webonline_mvc5.Models.admin
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .login-container {
+            width: 300px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .login-container h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-weight: bold;
+            }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+            .btn-login:hover {
+                background-color: #0056b3;
+            }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <label for="ad_name">Username</label>
+                @Html.TextBoxFor(x => x.ad_name, new { @class = "form-control", @placeholder = "Enter Username" })
+                <span class="error-message">@Html.ValidationMessageFor(x => x.ad_name)</span>
+            </div>
+
+            <div class="form-group">
+                <label for="ad_password">Password</label>
+                @Html.PasswordFor(x => x.ad_password, new { @class = "form-control", @placeholder = "Enter Password" })
+                <span class="error-message">@Html.ValidationMessageFor(x => x.ad_password)</span>
+            </div>
+
+            <input type="submit" value="Login" class="btn-login" />
+
+            <div class="form-group">
+                <p class="error-message">@ViewBag.error</p>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+<br />
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}

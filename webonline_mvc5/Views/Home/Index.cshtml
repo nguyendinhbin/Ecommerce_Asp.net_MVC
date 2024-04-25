@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Assuming a shared layout is used
+}
+
+<section class="about-area pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <img src="https://vocket.tech/app/uploads/sites/9/2022/09/FcEmXkpaMAEwxB9-1-1024x513.jpeg" class="card-img-top" alt="iPhone" style="height: 200px; object-fit: cover; transition: transform 0.3s;" />
+                            <div class="card-body">
+                                <h5 class="card-title">iPhone</h5>
+                                <p class="card-text">One of the top smartphones in the market.</p>
+                                <a href="@Url.Action("Details", "Product", new { id = 1 })" class="btn btn-primary" style="background-color: #3482A3; border-color: #3482A3;">View Details</a>
+                            </div>
+                            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+                                <div style="text-align: center;">
+                                    <h5>iPhone</h5>
+                                    <p>One of the top smartphones in the market.</p>
+                                    <a href="@Url.Action("Details", "Product", new { id = 1 })" class="btn btn-primary" style="background-color: #fff; color: #3482A3; border-color: #3482A3;">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <img src="https://p.turbosquid.com/ts-thumb/8v/6jwEe9/wa/prosilicon50001/png/1627387973/1920x1080/fit_q87/5d4bbb44cf8be5b70dc86a2af704b88b1686be9c/prosilicon50001.jpg" class="card-img-top" alt="Laptop" style="height: 200px; object-fit: cover; transition: transform 0.3s;" />
+                            <div class="card-body">
+                                <h5 class="card-title">Laptop</h5>
+                                <p class="card-text">High-performance and beautifully designed laptop.</p>
+                                <a href="@Url.Action("Details", "Product", new { id = 2 })" class="btn btn-primary" style="background-color: #3482A3; border-color: #3482A3;">View Details</a>
+                            </div>
+                            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+                                <div style="text-align: center;">
+                                    <h5>Laptop</h5>
+                                    <p>High-performance and beautifully designed laptop.</p>
+                                    <a href="@Url.Action("Details", "Product", new { id = 2 })" class="btn btn-primary" style="background-color: #fff; color: #3482A3; border-color: #3482A3;">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <img src="https://stcv4.hnammobile.com/uploads/news/large/marshall-trai-nghiem-but-pha-cung-am-thanh-social.jpg?v=1649398989" class="card-img-top" alt="Marshall Headphones" style="height: 200px; object-fit: cover; transition: transform 0.3s;" />
+                            <div class="card-body">
+                                <h5 class="card-title">Marshall Headphones</h5>
+                                <p class="card-text">Marshall Major IV over-ear headphones with high-quality sound.</p>
+                                <a href="@Url.Action("Details", "Product", new { id = 3 })" class="btn btn-primary" style="background-color: #3482A3; border-color: #3482A3;">View Details</a>
+                            </div>
+                            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+                                <div style="text-align: center;">
+                                    <h5>Marshall Headphones</h5>
+                                    <p>Marshall Major IV over-ear headphones with high-quality sound.</p>
+                                    <a href="@Url.Action("Details", "Product", new { id = 3 })" class="btn btn-primary" style="background-color: #fff; color: #3482A3; border-color: #3482A3;">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <img src="https://cdn.tgdd.vn//News/1528687//1-800x450.jpg" class="card-img-top" alt="AirPods" style="height: 200px; object-fit: cover; transition: transform 0.3s;" />
+                            <div class="card-body">
+                                <h5 class="card-title">AirPods</h5>
+                                <p class="card-text">Apple's wireless AirPods.</p>
+                                <a href="@Url.Action("Details", "Product", new { id = 4 })" class="btn btn-primary" style="background-color: #3482A3; border-color: #
+3482A3;">View Details</a>
+                            </div>
+                            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;">
+                                <div style="text-align: center;">
+                                    <h5>AirPods</h5>
+                                    <p>Apple's wireless AirPods.</p>
+                                    <a href="@Url.Action("Details", "Product", new { id = 4 })" class="btn btn-primary" style="background-color: #fff; color: #3482A3; border-color: #3482A3;">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center justify-content-center" style="background-image: url('https://eimg.pravda.com/images/doc/9/b/9b44570-37851604-1135241166641751-3116563651641737216-n.jpg'); background-size: cover; background-position: center;">
+                <div class="about-content text-center" style="background-color: rgba(255, 255, 255, 0.8); padding: 30px; border-radius: 10px;">
+                    <h2 class="mb-4" style="font-family: Montserrat, sans-serif; color: #333;">Explore Convenience</h2>
+                    <p class="mb-4" style="color: #666;">
+                        Enjoy a great shopping experience with top technology products from our store. We provide quality products at attractive prices, ensuring customer satisfaction.
+                    </p>
+                    <a href="@Url.Action("Products", "Home")" class="btn btn-primary" style="background-color: #3482A3; border-color: #3482A3;">View Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
